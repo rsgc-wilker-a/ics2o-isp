@@ -297,6 +297,7 @@
 				3FAEA6201DE73DC200B7959C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

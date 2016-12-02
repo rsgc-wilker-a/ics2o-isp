@@ -2,8 +2,9 @@
 
 import UIKit
 
-var equation = "x + 422 = 10"
+var equation = "x + 4 = 10"
 
+//( Following lines of code are setup
 var word = ""
 var count = 1
 
@@ -12,7 +13,9 @@ var stringB = ""
 var stringC = ""
 var stringD = ""
 var stringE = ""
+//)
 
+//( Following lines of code seperate the strings
 for character in equation.characters {
     if character == " " {
         if count == 1{
@@ -34,38 +37,31 @@ for character in equation.characters {
     }
 }
             stringE = word
+//)
 
-print(stringA)
-print(stringB)
-print(stringC)
-print(stringD)
-print(stringE)
-
+//( Following lines of code turn strings into integers with new var names
 var integerC = 0
-
 integerC = Int(stringC)!
 
-print(integerC)
-
 var integerE = 0
-
 integerE = Int(stringE)!
+//)
 
-print(integerE)
-
+//( Setup
 var lastInt = 0
+//)
 
+//( Does the mathematical equations dependant on what sign is given
 if stringB == "+"{lastInt = integerE - integerC}
 if stringB == "-"{lastInt = integerE + integerC}
+//)
 
-print(lastInt)
-
+//( Turns the answer into a string
 var lastString = ""
-
 lastString = String(lastInt)
+//)
 
-print(lastString)
-
+//( What the user sees
 var finalString = ""
-
 finalString = "\(stringA) \(stringD) \(lastString)"
+//)

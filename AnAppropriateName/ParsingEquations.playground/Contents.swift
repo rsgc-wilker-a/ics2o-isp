@@ -1,6 +1,6 @@
 import UIKit
 
-var equation = "x * 36 = 8934074586"
+var equation = "a + 13 = 87"
 
 //( Following lines of code are setup
 var word = ""

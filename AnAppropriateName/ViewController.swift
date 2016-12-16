@@ -28,20 +28,23 @@ class ViewController: UIViewController {
     }
 
     @IBAction func findForX(_ sender: Any) {
-        var equation = String(describing: enterProblemHere)
         
-        //( Following lines of code are setup
+        guard let equation = enterProblemHere.text else {
+            return
+        }
+    
+        //( Following lines of codes are setup, count is to increase with every spin of the loop, word is an empty string that will hold a value to seperate the 5 strings.
         var word = ""
         var count = 1
         
-        var stringA = " "
-        var stringB = " "
-        var stringC = " "
-        var stringD = " "
-        var stringE = " "
+        var stringA = ""
+        var stringB = ""
+        var stringC = ""
+        var stringD = ""
+        var stringE = ""
         //)
         
-        //( Following lines of code seperate the strings
+        //( Following lines of code seperate equation into five strings
         for character in equation.characters {
             if character == " " {
                 if count == 1{stringA = word}
@@ -54,10 +57,10 @@ class ViewController: UIViewController {
                 word += "\(character)"
             }
         }
-        stringE = word
+                              stringE = word
         //)
         
-        //( Following lines of code turn strings into doubles with new variable names
+        //( Following lines of code turns the first and second numbers into doubles (ex: 0.0)
         let doubleC = Double(stringC)!
 
         let doubleE = Double(stringE)!
@@ -67,19 +70,19 @@ class ViewController: UIViewController {
         var lastDouble = 0.0
         //)
         
-        //( Does the mathematical equations dependant on what sign is given
+        //( Does the mathematical equations dependant on what sign is given, to find the right side of the x =
         if stringB == "+"{lastDouble = doubleE - doubleC}
         if stringB == "-"{lastDouble = doubleE + doubleC}
         if stringB == "*"{lastDouble = doubleE / doubleC}
         if stringB == "/"{lastDouble = doubleE * doubleC}
         //)
         
-        //( Turns the answer into a string
+        //( Turns the right side of the x = back into a string to feed back to the user
         var lastString = ""
         lastString = String(lastDouble)
         //)
         
-        //( What the user sees
+        //( This part finally gets the x, y, z, what ever was entered as the first part, the = sign, and what we found x to equal to into answer.text
         answer.text = "\(stringA) \(stringD) \(lastString)"
         //)
     }

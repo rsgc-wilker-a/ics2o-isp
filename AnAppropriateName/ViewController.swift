@@ -60,9 +60,18 @@ class ViewController: UIViewController {
                               stringE = word
         //)
         
+        //( giving error messages if there are too few or too many characters, or if the user deviates from square/cube roots
+        if stringE == ""{
+            answer.text = "Error: Too little characters"
+        }else if stringB == "root" && stringC != "2"{
+            answer.text = "Error: only square roots are currently supported"
+        }else if stringB == "^" && stringC != "2"{
+            answer.text = "Error: x to the exponent of two is only currently supported"
+        }else{
+        //)
+            
         //( Following lines of code turns the first and second numbers into doubles (ex: 0.0)
         let doubleC = Double(stringC)!
-
         let doubleE = Double(stringE)!
         //)
         
@@ -75,6 +84,8 @@ class ViewController: UIViewController {
         if stringB == "-"{lastDouble = doubleE + doubleC}
         if stringB == "*"{lastDouble = doubleE / doubleC}
         if stringB == "/"{lastDouble = doubleE * doubleC}
+        if stringB == "root" && stringC == "2"{lastDouble = doubleE * doubleE}
+        if stringB == "^" && stringC == "2"{lastDouble = sqrt(doubleE)}
         //)
         
         //( Turns the right side of the x = back into a string to feed back to the user
@@ -84,6 +95,7 @@ class ViewController: UIViewController {
         
         //( This part finally gets the x, y, z, what ever was entered as the first part, the = sign, and what we found x to equal to into answer.text
         answer.text = "\(stringA) \(stringD) \(lastString)"
+            }
         //)
     }
 

@@ -33,7 +33,7 @@ class ViewController: UIViewController {
             return
         }
     
-        //( Following lines of codes are setup, count is to increase with every spin of the loop, word is an empty string that will hold a value to seperate the 5 strings.
+        //( The following lines of codes are setup, count is to increase with every spin of the loop, word is an empty string that will hold a value to seperate the 5 strings.
         var word = ""
         var count = 1
         
@@ -42,17 +42,19 @@ class ViewController: UIViewController {
         var stringC = ""
         var stringD = ""
         var stringE = ""
+        var stringT = ""
         //)
         
-        //( Following lines of code seperate equation into five strings
+        //( The following lines of code seperate equation into five strings (or six if the user entered too many)
         for character in equation.characters {
             if character == " " {
                 if count == 1{stringA = word}
                 if count == 2{stringB = word}
                 if count == 3{stringC = word}
                 if count == 4{stringD = word}
-                count = count + 1
-                word = ""
+                if count == 5{stringT = word}
+                    count = count + 1
+                    word = ""
             } else {
                 word += "\(character)"
             }
@@ -60,43 +62,59 @@ class ViewController: UIViewController {
                               stringE = word
         //)
         
-        //( giving error messages if there are too few or too many characters, or if the user deviates from square/cube roots
+        //( This gives error messages if there are too few or too many characters
         if stringE == ""{
             answer.text = "Error: Too little characters"
-        }else if stringB == "root" && stringC != "2"{
-            answer.text = "Error: only square roots are currently supported"
-        }else if stringB == "^" && stringC != "2"{
-            answer.text = "Error: x to the exponent of two is only currently supported"
+        }else if stringT != ""{
+            answer.text = "Error: Too many characters"
         }else{
         //)
             
-        //( Following lines of code turns the first and second numbers into doubles (ex: 0.0)
+        //( The following lines of code turns the first and second numbers into doubles (ex: 0.1)
         let doubleC = Double(stringC)!
         let doubleE = Double(stringE)!
         //)
         
-        //( Setup
+        //( This is setting up a new variable to use in the end
         var lastDouble = 0.0
         //)
         
-        //( Does the mathematical equations dependant on what sign is given, to find the right side of the x =
+        //( This does the mathematical equations dependant on what sign is given, to find the right side of the x =
         if stringB == "+"{lastDouble = doubleE - doubleC}
         if stringB == "-"{lastDouble = doubleE + doubleC}
         if stringB == "*"{lastDouble = doubleE / doubleC}
         if stringB == "/"{lastDouble = doubleE * doubleC}
-        if stringB == "root" && stringC == "2"{lastDouble = doubleE * doubleE}
-        if stringB == "^" && stringC == "2"{lastDouble = sqrt(doubleE)}
+        if stringB == "root"{lastDouble = pow(doubleE, doubleC)}
+        if stringB == "^"{lastDouble = pow(doubleE, 1/doubleC)}
         //)
         
-        //( Turns the right side of the x = back into a string to feed back to the user
-        var lastString = ""
-        lastString = String(lastDouble)
+        //( This turns the right side of the x = back into a string to feed back to the user
+        let lastString = String(lastDouble)
         //)
         
-        //( This part finally gets the x, y, z, what ever was entered as the first part, the = sign, and what we found x to equal to into answer.text
+        //( This part finally gets what we are trying to solve for, the = sign, and what we found x to equal to into answer.text (which is displayed to the user)
         answer.text = "\(stringA) \(stringD) \(lastString)"
-            }
         //)
+        
+        //( This is another error sequence for when x is unsolvable, and gives appropriate errors
+        if stringB == "root" && stringC == "0"{
+            answer.text = "Error: Cannot solve for an undefined"
+        }
+        
+        if stringB == "^" && stringC == "0" && stringE != "1"{
+            answer.text = "Error: Cannot solve due to 0th dimension"
+        }
+        
+        if stringB == "/" && stringC == "0"{
+            answer.text = "Error: Cannot solve due to infinite division"
+        }
+        
+        if stringB == "*" && stringC == "0" && stringE != "0"{
+            answer.text = "Error: Nothing works, \(stringA) impossible"
+        }
+        //)
+        }
+        
     }
 
 }

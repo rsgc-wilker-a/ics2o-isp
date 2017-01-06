@@ -12,26 +12,6 @@ var stringC = ""
 var stringD = ""
 var stringE = ""
 var stringF = ""
-var stringG = ""
-var stringH = ""
-var stringI = ""
-var stringJ = ""
-var stringK = ""
-var stringL = ""
-var stringM = ""
-var stringN = ""
-var stringO = ""
-var stringP = ""
-var stringQ = ""
-var stringR = ""
-var stringS = ""
-var stringT = ""
-var stringU = ""
-var stringV = ""
-var stringW = ""
-var stringX = ""
-var stringY = ""
-var stringZ = ""
 //)
 
 //( Following lines of code seperate the strings
@@ -42,33 +22,20 @@ for character in equation.characters {
         if count == 3{stringC = word}
         if count == 4{stringD = word}
         if count == 5{stringE = word}
-        if count == 6{stringF = word}
-        if count == 7{stringG = word}
-        if count == 8{stringH = word}
-        if count == 9{stringI = word}
-        if count == 10{stringJ = word}
-        if count == 11{stringK = word}
-        if count == 12{stringL = word}
-        if count == 13{stringM = word}
-        if count == 14{stringN = word}
-        if count == 15{stringO = word}
-        if count == 16{stringP = word}
-        if count == 17{stringQ = word}
-        if count == 18{stringR = word}
-        if count == 19{stringS = word}
-        if count == 20{stringT = word}
-        if count == 21{stringU = word}
-        if count == 22{stringV = word}
-        if count == 23{stringW = word}
-        if count == 24{stringX = word}
-        if count == 25{stringY = word}
         count = count + 1
         word = ""
     } else {
         word += "\(character)"
     }
 }
-                       stringZ = word
+                       stringF = word
+print(stringA)
+print(stringB)
+print(stringC)
+print(stringD)
+print(stringE)
+print(stringF)
+
 //)
 
 //( This will sort everything to either the left or right of the "=" sign
@@ -82,7 +49,7 @@ var doubleC = 0.0
 doubleC = Double(stringC)!
 
 var doubleZ = 0.0
-doubleZ = Double(stringZ)!
+doubleZ = Double(stringF)!
 //)
 
 //( Setup
